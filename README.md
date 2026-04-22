@@ -1,5 +1,3 @@
-Here’s a **short, clean GitHub README** version:
-
 ---
 
 # 💬 Real-Time Chat App
@@ -77,5 +75,3 @@ CLOUDINARY_API_SECRET=your_secret
 **Vansh Talwar**
 
 ---
-
-If you want an even **1-liner ultra-minimal README (for recruiters)** or a **fancy one with badges**, I can do that too.
