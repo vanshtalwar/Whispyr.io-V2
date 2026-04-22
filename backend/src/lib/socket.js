@@ -4,15 +4,10 @@ import express from "express";
 
 const app = express();
 const server = http.createServer(app);
-const defaultOrigins = ["http://localhost:5173", process.env.FRONTEND_URL || "https://whispyr-io-v2-zrzz.vercel.app"];
-const allowedOrigins = (process.env.SOCKET_CORS_ORIGIN || process.env.CORS_ORIGIN || defaultOrigins.join(","))
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
 
 const io = new Server(server, {
   cors: {
-    origin: allowedOrigins,
+    origin: ["http://localhost:5173"],
   },
 });
 

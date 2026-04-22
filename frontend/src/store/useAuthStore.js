@@ -3,10 +3,7 @@ import { axiosInstance } from "../lib/axios.js";
 import toast from "react-hot-toast";
 import { io } from "socket.io-client";
 
-const isLocalhost = typeof window !== "undefined" && ["localhost", "127.0.0.1"].includes(window.location.hostname);
-const SOCKET_URL = isLocalhost
-  ? "http://localhost:5001"
-  : import.meta.env.VITE_SOCKET_URL || import.meta.env.VITE_API_URL || "https://whispyr-io-v2.onrender.com";
+const BASE_URL = import.meta.env.MODE === "development" ? "http://localhost:5001" : "/";
 
 export const useAuthStore = create((set, get) => ({
   authUser: null,
@@ -89,7 +86,7 @@ export const useAuthStore = create((set, get) => ({
     const { authUser } = get();
     if (!authUser || get().socket?.connected) return;
 
-    const socket = io(SOCKET_URL, {
+    const socket = io(BASE_URL, {
       query: {
         userId: authUser._id,
       },

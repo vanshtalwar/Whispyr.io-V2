@@ -15,17 +15,12 @@ dotenv.config();
 
 const PORT = process.env.PORT;
 const __dirname = path.resolve();
-const defaultOrigins = ["http://localhost:5173", process.env.FRONTEND_URL || "https://whispyr-io-v2-zrzz.vercel.app"];
-const allowedOrigins = (process.env.CORS_ORIGIN || defaultOrigins.join(","))
-  .split(",")
-  .map((origin) => origin.trim())
-  .filter(Boolean);
 
 app.use(express.json());
 app.use(cookieParser());
 app.use(
   cors({
-    origin: allowedOrigins,
+    origin: "http://localhost:5173",
     credentials: true,
   })
 );
